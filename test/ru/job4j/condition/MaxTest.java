@@ -23,4 +23,10 @@ public class MaxTest {
         int result = Max.max(5, 5);
         assertThat(result, is(5));
     }
+
+    @Test
+    public void whenNumbers5and8and14and90ThenMax90() {
+        int result = Max.max(5, 8, 14, 90);
+        assertThat(result, is(90));
+    }
 }
