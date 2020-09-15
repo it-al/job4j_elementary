@@ -40,4 +40,13 @@ public class PointTest {
         double expected = 4;
         Assert.assertEquals(expected, out, 0.01);
     }
+
+    @Test
+    public void when112to819than9and89() {
+        Point a = new Point(1, 1, 2);
+        Point b = new Point(8, 1,9);
+        double out = b.distance3d(a);
+        double expected = 9.89;
+        Assert.assertEquals(expected, out, 0.01);
+    }
 }
