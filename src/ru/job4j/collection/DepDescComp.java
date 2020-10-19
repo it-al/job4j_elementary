@@ -8,19 +8,9 @@ public class DepDescComp implements Comparator<String> {
         int rsl = 0;
         String[] departmentArray1 = o1.split("/");
         String[] departmentArray2 = o2.split("/");
-        int minLength = Math.min(departmentArray1.length, departmentArray2.length);
-        for (int i = 0; i < minLength; i++) {
-            if (i == 0) {
-                rsl = departmentArray2[i].compareTo(departmentArray1[i]);
-            } else {
-                rsl = departmentArray1[i].compareTo(departmentArray2[i]);
-            }
-            if (rsl != 0) {
-                break;
-            }
-        }
+        rsl = departmentArray2[0].compareTo(departmentArray1[0]);
         if (rsl == 0) {
-            rsl = departmentArray1.length - departmentArray2.length;
+            rsl = o1.compareTo(o2);
         }
         return rsl;
     }
