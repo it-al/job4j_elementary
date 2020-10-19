@@ -1,28 +1,31 @@
 package ru.job4j.collection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
 public class Departments {
 
     public static List<String> fillGaps(List<String> deps) {
-        List<String> rsl = new ArrayList<>();
-        HashSet<String> uniqueDepartments = new HashSet<>();
-        for (String departmentPath : deps) {
-            uniqueDepartments.addAll(Arrays.asList(departmentPath.split("/")));
+        HashSet<String> tmp = new HashSet<>();
+        for (String value : deps) {
+            String start = "";
+            for (String el : value.split("/")) {
+                if (start.length() == 0) {
+                    start = start + el;
+                } else {
+                    start = start + "/" + el;
+                }
+                tmp.add(start);
+            }
         }
-        String fullPathDepartment = "";
-        for (String uniqueDepartment : uniqueDepartments) {
-            fullPathDepartment = fullPathDepartment + (fullPathDepartment.equals("") ? "" : "/") + uniqueDepartment;
-            rsl.add(fullPathDepartment);
-        }
+        ArrayList<String> rsl = new ArrayList<>(tmp);
+        sortAsc(rsl);
         return rsl;
     }
 
     public static void sortAsc(List<String> orgs) {
-        orgs.sort(new DepAscComp());
+        orgs.sort(String::compareTo);
     }
 
     public static void sortDesc(List<String> orgs) {
