@@ -10,9 +10,13 @@ public class Profile {
         this.address = address;
     }
 
+    public Address getAddress() {
+        return this.address;
+    }
+
     public static List<Address> collect(List<Profile> profiles) {
         return profiles.stream()
-                .map((s) -> s.address)
+                .map(Profile::getAddress)
                 .sorted(((o1, o2) -> o1.getCity().compareTo(o2.getCity())))
                 .distinct()
                 .collect(Collectors.toList());
