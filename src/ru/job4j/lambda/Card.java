@@ -1,6 +1,5 @@
 package ru.job4j.lambda;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,13 +25,8 @@ public class Card {
     public static void main(String[] args) {
 
         List<Card> cards = Stream.of(Suit.values())
-                .flatMap(s -> {
-                    List<Card> tmpcards = new ArrayList<>();
-                    for (Value v : Value.values()) {
-                        tmpcards.add(new Card(s, v));
-                    }
-                    return tmpcards.stream();
-                })
+                .flatMap(s -> Stream.of(Value.values())
+                        .map(v -> new Card(s, v)))
                 .collect(Collectors.toList());
     }
 }
