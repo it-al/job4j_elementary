@@ -23,7 +23,6 @@ public class Card {
     }
 
     public static void main(String[] args) {
-
         List<Card> cards = Stream.of(Suit.values())
                 .flatMap(s -> Stream.of(Value.values())
                         .map(v -> new Card(s, v)))
